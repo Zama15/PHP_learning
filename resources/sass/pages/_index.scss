@@ -21,10 +21,66 @@ header {
   nav {
     margin: 15px;
 
-    ul {
+    ul li {
       display: inline;
       margin: 0 10px;
       list-style-type: none;
+    }
+  }
+}
+
+.menu {
+  text-decoration: none;
+  color: black;
+}
+
+.logo {
+  display: flex;
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 0 50px 0 0;
+
+  & > img {
+    max-width: 9rem;
+  }
+}
+
+.content {
+  width: 80%;
+  margin: 20px auto;
+
+  .grid-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 20px;
+    padding: 5px;
+  }
+}
+
+.ficha {
+  padding: 10px;
+  border: 2px solid black;
+  border-radius: 10px;
+  max-width: 310px;
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+  background-color: #f5f5f5;
+
+  & > img {
+    max-width: 100%;
+    border-radius: 10px 10px 0 0;
+  }
+
+  & > .datos {
+    padding: 10px;
+    text-align: center;
+
+    h3 {
+      margin: 0;
+    }
+
+    p {
+      margin: 0;
     }
   }
 }
