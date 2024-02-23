@@ -76,5 +76,44 @@
             "potencia" : "135 HP",
             "rendimiento" : "11 K/l"
         }
+    },
+    {
+        "id" : 7,
+        "tipo" : "moto",
+        "foto" : "Pulsar-N250.webp",
+        "marca": "Bajaj",
+        "modelo" : "Pulsar",
+        "anio" : "2019",
+        "datostecnicos" : {
+            "motor" : "250cc",
+            "transmision" : "5 velocidades",
+            "potencia" : "25 HP"
+        }
+    },
+    {
+        "id" : 8,
+        "tipo" : "moto",
+        "foto" : "yamaha-fz-s-v-3-0-21-jan-2019.webp",
+        "marca": "Yamaha",
+        "modelo" : "FZ",
+        "anio" : "2019",
+        "datostecnicos" : {
+            "motor" : "150cc",
+            "transmision" : "5 velocidades",
+            "potencia" : "15 HP"
+        }
+    },
+    {
+        "id" : 9,
+        "tipo" : "moto",
+        "foto" : "463836_my23-ktm-390-duke_-45-degree-front-right-india-ctg-_dark-galvano_india.webp",
+        "marca": "KTM",
+        "modelo" : "Duke",
+        "anio" : "2019",
+        "datostecnicos" : {
+            "motor" : "390cc",
+            "transmision" : "6 velocidades",
+            "potencia" : "40 HP"
+        }
     }
 ]
