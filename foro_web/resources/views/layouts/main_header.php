@@ -10,7 +10,7 @@ function head($args = null) {
 
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
 </head>
-<body>
+<body style="background-color: #696969;">
   <div id="app" class="container-fluid p-0">
     <header class="row m-0 bg-light">
       <div class="col-9">
