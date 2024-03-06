@@ -10,7 +10,7 @@
         </div>
       </div>
       <div class="col-4 shadow p-3 mb-5 bg-body-tertiary rounded">
-        <div class="authors list-groups" id="authors">
+        <div class="authors list-group" id="authors">
           
         </div>
       </div>
