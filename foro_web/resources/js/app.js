@@ -4,6 +4,7 @@ const app = {
   urlUsers: 'http://jsonplaceholder.typicode.com/users',
 
   userId : "",
+  keyWord : "",
 
   loadPosts: async function() {
     const cont = $('#content');
@@ -21,7 +22,10 @@ const app = {
     fetch(this.urlPosts + urlaux)
       .then(response => response.json())
       .then(posts => {
-        posts.forEach(post => {
+        for (let post of posts) {
+          if(post.body.indexOf(this.keyWord) === -1 && post.title.indexOf(this.keyWord) === -1) {
+            continue;
+          }
           html += `
             <div class="card mb-3">
               <div class="card-body">
@@ -49,7 +53,7 @@ const app = {
               </div>
             </div>
           `;
-        });
+        };
         cont.html(html);
       }).catch(error => console.error('Error:', error))
   },
@@ -108,6 +112,13 @@ const app = {
     $(`#card-comments-post${ postId }`).addClass('d-none', true);
     $(`#btn-ver-comments-post${ postId }`).removeClass('d-none', true);
     $(`#btn-cer-comments-post${ postId }`).addClass('d-none', true);
+  },
+
+  searchByWord: function() {
+    $('#User' + this.userId).removeClass('active');
+    this.userId = "";
+    this.keyWord = $('#search').val();
+    this.loadPosts();
   }
 }
 

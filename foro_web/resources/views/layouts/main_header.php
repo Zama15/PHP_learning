@@ -7,6 +7,8 @@ function head($args = null) {
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Foro</title>
+  <!-- set favicon -->
+  <link rel="icon" href="../imgs/logo.ico" type="image/x-icon">
 
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
@@ -17,8 +19,8 @@ function head($args = null) {
       <div class="col-9">
         <h1 class="ml-3 mt-2">Foro</h1>
       </div>
-      <div class="col-3">
-        <img src="" alt="Logo">
+      <div class="col-3 d-flex justify-content-end">
+        <img src="../imgs/logo.svg" alt="Logo" class="m-2" style="width: 50px; height: 50px;">
       </div>
     </header>
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
@@ -50,9 +52,11 @@ function head($args = null) {
               <a class="nav-link disabled" aria-disabled="true">Disabled</a>
             </li>
           </ul>
-          <form class="d-flex" role="search">
-            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-success" type="submit">Search</button>
+          <form action="#" class="d-flex" role="search">
+            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" id="search">
+            <button class="btn btn-outline-success" type="submit" onclick="app.searchByWord(event)">
+              <i class="bi bi-search"></i>
+            </button>
           </form>
         </div>
       </div>
