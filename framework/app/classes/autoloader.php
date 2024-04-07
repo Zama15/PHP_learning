@@ -1,5 +1,5 @@
 <?php 
-namespace app\classes;
+namespace framework\classes;
 
 class Autoloader {
   public static function register() {

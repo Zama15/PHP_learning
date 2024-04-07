@@ -1,8 +1,8 @@
 <?php 
 namespace Framework;
 
-use app\classes\Autoloader;
-use app\classes\Router;
+use framework\classes\Autoloader;
+use framework\classes\Router;
 
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
@@ -19,13 +19,13 @@ class App {
   }
 
   private function init() {
-    $this->loadConfig();
-    $this->loadHelpers();
-    $this->initAutoloader();
-    $this->initRouter();
+    $this->load_config();
+    $this->load_helpers();
+    $this->init_autoloader();
+    $this->init_router();
   }
 
-  private function loadConfig() {
+  private function load_config() {
     if (!file_exists(__DIR__ . '/config.php')) {
       die('Config file not found');
     }
@@ -33,7 +33,7 @@ class App {
     require_once __DIR__ . '/config.php';
   }
 
-  private function loadHelpers() {
+  private function load_helpers() {
     if (!file_exists(__DIR__ . '/resources/functions/app_helper.php')) {
       die('Helper file not found');
     }
@@ -41,7 +41,7 @@ class App {
     require_once __DIR__ . '/resources/functions/app_helper.php';
   }
 
-  private function initAutoloader() {
+  private function init_autoloader() {
     if (!file_exists(CLASSES . 'autoloader.php')) {
       die('Autoloader file not found');
     }
@@ -51,7 +51,7 @@ class App {
     return;
   }
 
-  private function initRouter() {
+  private function init_router() {
     if (!file_exists(CLASSES . 'router.php')) {
       die('Router file not found');
     }

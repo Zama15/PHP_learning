@@ -1,5 +1,8 @@
 <?php 
-namespace app\classes;
+namespace framework\classes;
+
+use framework\controllers\HomeController;
+use framework\controllers\ErrorController;
 
 class Router {
   private $uri = '';
@@ -8,19 +11,71 @@ class Router {
   }
 
   public function dispatch() {
-    $this->filterRequest();
+    $this->filter_request();
+
+    $controller = $this->get_controller();
+    $action = $this->get_action();
+    $params = $this->get_params();
+
+    switch($controller) {
+      case 'HomeController':
+        // $controller = new HomeController();
+        $controller = 'HomeController';
+        break;
+      default:
+        // $controller = new ErrorController();
+        $controller = 'ErrorController';
+        $action = '404';
+        break;
+    }
+    // $controller->$action($params);
+    print_r($controller . '->' . $action);
+
+    return;
   }
 
-  private function filterRequest() {
+  private function filter_request() {
     $request = filter_input_array(INPUT_GET);
     if (isset($request['uri'])) {
       $this->uri = $request['uri'];
       $this->uri = rtrim($this->uri, '/');
       $this->uri = filter_var($this->uri, FILTER_SANITIZE_URL);
       $this->uri = explode('/', ucfirst(strtolower($this->uri)));
-      print_r($this->uri);
       return;
     }
+  }
+
+  private function get_controller() {
+    if (isset($this->uri[0])) {
+      $controller = $this->uri[0];
+      unset($this->uri[0]);
+    } else {
+      $controller = 'Home';
+    }
+    $controller = ucfirst($controller) . 'Controller';
+
+    return $controller;
+  }
+
+  private function get_action() {
+    if (isset($this->uri[1])) {
+      $action = $this->uri[1];
+      unset($this->uri[1]);
+    } else {
+      $action = 'index';
+    }
+
+    return $action;
+  }
+
+  private function get_params() {
+    $params = [];
+
+    if (!empty($this->uri)) {
+      $params = $this->uri;
+    }
+
+    return $params;
   }
 }
 ?>
