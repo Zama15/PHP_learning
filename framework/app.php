@@ -7,7 +7,6 @@ use framework\classes\Router;
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
-
 class App {
   public function __construct() {
     $this->init();
@@ -34,11 +33,11 @@ class App {
   }
 
   private function load_helpers() {
-    if (!file_exists(__DIR__ . '/resources/functions/app_helper.php')) {
+    if (!file_exists(HELPERS . 'app_helper.php')) {
       die('Helper file not found');
     }
 
-    require_once __DIR__ . '/resources/functions/app_helper.php';
+    require_once HELPERS . 'app_helper.php';
   }
 
   private function init_autoloader() {

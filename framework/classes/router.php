@@ -19,17 +19,14 @@ class Router {
 
     switch($controller) {
       case 'HomeController':
-        // $controller = new HomeController();
-        $controller = 'HomeController';
+        $controller = new HomeController();
         break;
       default:
-        // $controller = new ErrorController();
-        $controller = 'ErrorController';
-        $action = '404';
+        $controller = new ErrorController();
+        $action = 'error404';
         break;
     }
-    // $controller->$action($params);
-    print_r($controller . '->' . $action);
+    $controller->$action($params);
 
     return;
   }

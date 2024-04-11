@@ -11,4 +11,8 @@ define('DB_HOST', IS_LOCAL ? 'localhost' : 'REMOTE_HOST');
 define('CLASSES', ROOT . 'classes' . DS);
 define('CLASSES_PATH', ROOT . '..' . DS);
 
+define('RESOURCES', ROOT . 'resources' . DS);
+define('LAYOUTS', RESOURCES . 'layouts' . DS);
+define('VIEWS', RESOURCES . 'views' . DS);
+define('HELPERS', RESOURCES . 'helpers' . DS);
 ?>
