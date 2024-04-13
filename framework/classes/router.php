@@ -3,6 +3,7 @@ namespace framework\classes;
 
 use framework\controllers\HomeController;
 use framework\controllers\ErrorController;
+use framework\controllers\PostsController;
 
 class Router {
   private $uri = '';
@@ -20,6 +21,9 @@ class Router {
     switch($controller) {
       case 'HomeController':
         $controller = new HomeController();
+        break;
+      case 'PostsController':
+        $controller = new PostsController();
         break;
       default:
         $controller = new ErrorController();

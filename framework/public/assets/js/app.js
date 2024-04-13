@@ -3,7 +3,7 @@ const app = {
     home: '/home',
     initsession: '/session/initSession',
 
-    prevposts: '/post/getPosts',
+    prevposts: '/posts/getPosts',
   },
 
   user: {},
