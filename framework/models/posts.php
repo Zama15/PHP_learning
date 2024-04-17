@@ -10,9 +10,19 @@ class Posts extends Model {
 
   public $values = [];
 
-  public function getAllPosts() {
-    $result = $this->all()->get();
+  public function __construct() {
+    parent::__construct();
 
+    $this->table = $this->connect();
+  }
+
+  public function getAllPosts($limit = 5) {
+    // $result = $this->all()->get();
+    $result = $this->select(['title', 'date_format(created_at,"%d/%m/%Y") as fecha', 'userId as name'])
+                   ->where([['active', 1]])
+                   ->orderby([['created_at', 'desc']])
+                   ->limit($limit)
+                   ->get();
     return $result;
   }
 }

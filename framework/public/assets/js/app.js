@@ -9,16 +9,16 @@ const app = {
   user: {},
   pp: $('#prev-posts'),
 
-  previusPosts: function (callback) {
+  previusPosts: function () {
     let html = '<p>There are no posts</p>';
     this.pp.html('');
 
-    fetch(response => {
-      console.log(response);
-
-      return response.json();
-    }).then( posts => {
-      posts.forEach( post => {
+    fetch(this.routes.prevposts)
+    .then( response => response.json())
+    .then( posts => {
+      html = '';
+      console.log(posts);
+      for (let post of posts) {
         html += `
           <button onclick="app.openPosts(event, ${ posts.id }, this)"
             class="list-group-item list-group-item-action">
@@ -29,8 +29,12 @@ const app = {
             <p class="mb-1">${ post.name }</p>
           </button>
         `;
-      });
+      };
       this.pp.html(html);
     }).catch( err => console.error('Error: ', err));
   }
+}
+
+window.onload = function () {
+  app.previusPosts();
 }

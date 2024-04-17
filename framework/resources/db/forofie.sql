@@ -176,6 +176,14 @@ ALTER TABLE `posts`
   ADD CONSTRAINT `fk_posts_userid` FOREIGN KEY (`userId`) REFERENCES `user` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 COMMIT;
 
+-- =============================================== ADDED ===============================================
+
+INSERT into posts (userId, title, body) values (1, "¿Qué es Lorem Ipsum?", "Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto.");
+INSERT into posts (userId, title, body, active) values (1, "¿Por qué lo usamos?", "Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto.", 1);
+INSERT into posts (userId, title, body, active) values (1, "¿De dónde viene?", "Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto.", 1);
+
+ALTER TABLE posts ADD COLUMN active INT DEFAULT 0;
+
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

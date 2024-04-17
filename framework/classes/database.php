@@ -13,14 +13,14 @@ class DataBase {
 
   public $s = ' * ';
   public $w = ' 1 ';
+  public $o = '';
+  public $l = '';
 
   public function __construct($dbh = DB_HOST, $dbu = DB_USER, $dbp = DB_PASS, $dbn = DB_NAME) {
     $this->db_host = $dbh;
     $this->db_user = $dbu;
     $this->db_pass = $dbp;
     $this->db_name = $dbn;
-
-    $this->connect();
   }
 
   public function connect() {
@@ -39,17 +39,65 @@ class DataBase {
     return $this;
   }
 
+  public function select($cc = []) {
+    if (count($cc) > 0) {
+      $this->s = implode(", ", $cc);
+    }
+
+    return $this;
+  }
+
+  public function where($ww = []) {
+    $this->w = '';
+
+    if (count($ww) > 0) {
+      foreach ($ww as $where) {
+        $this->w .= "$where[0] LIKE $where[1] AND";
+      }
+    }
+
+    $this->w .= ' 1 ';
+
+    $this->w = '(' . $this->w . ')';
+
+    return $this;
+  }
+
+  public function orderBy($ob = []) {
+    $this->o = '';
+
+    if (count($ob) > 0) {
+      foreach ($ob as $order) {
+        $this->o .= "$order[0] $order[1],";
+      }
+      $this->o = 'ORDER BY ' . rtrim($this->o, ','); 
+    }
+
+    return $this;
+  }
+
+  public function limit($l = '') {
+    $this->l = '';
+
+    if ($l != '') {
+      $this->l = "LIMIT $l";
+    }
+
+    return $this;
+  }
+
   public function get() {
     $table = lcfirst(str_replace("framework\\models\\", "", get_class($this)));
 
-    $sql = "SELECT $this->s FROM $table WHERE $this->w";
+    $sql = "SELECT $this->s FROM $table WHERE $this->w $this->o $this->l";
     $result = $this->conn->query($sql);
 
-    if ($result->num_rows > 0) {
-      return $result->fetch_all(MYSQLI_ASSOC);
+    $data = [];
+    while ($f = $result->fetch_assoc()) {
+      $data[] = $f;
     }
 
-    return [];
+    return json_encode($data);
   }
 }
 ?>

@@ -12,8 +12,8 @@ class PostsController extends BaseController {
   public function getPosts() {
     $posts = new Posts();
     $result = $posts->getAllPosts();
-    // $this->view->render('posts', $result);
 
+    echo $result;
   }
 }
 ?>
