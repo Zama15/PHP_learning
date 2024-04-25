@@ -22,7 +22,6 @@ const register = {
         text: 'All fields are required!',
       });
     } else if (pass.val() !== passConf.val()) {
-      console.log('Passwords match');
       Swal.fire({
         icon: 'error',
         title: 'Oops...',
@@ -32,7 +31,6 @@ const register = {
         passConf.focus();
       });
     } else {
-      console.log('Passwords do not match');
       this.register();
     }
   }, 
@@ -43,8 +41,9 @@ const register = {
     fetch(this.routes.register, {
       method: 'POST',
       body: data,
-    }).then( resp => {
-      if (resp.ok) {
+    }).then( response => response.json())
+    .then(resp => {
+      if (resp.r !== false) {
         location.href = this.routes.initsession;
       } else {
         $('#error').removeClass('d-none');

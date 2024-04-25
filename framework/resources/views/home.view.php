@@ -22,6 +22,6 @@
 
 <?php
   include_once LAYOUTS . 'footer.php';
-  setFooter($d);
+  setFooter($d, 'app.js');
 ?>
 <?php closeFooter(); ?>

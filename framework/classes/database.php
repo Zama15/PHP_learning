@@ -61,7 +61,7 @@ class DataBase {
 
     if (count($ww) > 0) {
       foreach ($ww as $where) {
-        $this->w .= "$where[0] LIKE $where[1] AND";
+        $this->w .= "$where[0] LIKE '$where[1]' AND ";
       }
     }
 
@@ -97,8 +97,9 @@ class DataBase {
 
   public function get() {
     $table = lcfirst(str_replace("framework\\models\\", "", get_class($this)));
+    $table = $this->j == '' ? $table : "$table a";
 
-    $sql = "SELECT $this->s FROM $table a $this->j WHERE $this->w $this->o $this->l";
+    $sql = "SELECT $this->s FROM $table $this->j WHERE $this->w $this->o $this->l";
     $result = $this->conn->query($sql);
 
     $data = [];

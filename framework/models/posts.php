@@ -20,7 +20,7 @@ class Posts extends Model {
     $result = $this->select(['a.title', 'date_format(a.created_at,"%d/%m/%Y") as fecha', 'b.name'])
                    ->join('user b', 'a.userId = b.id')
                    ->where([['active', 1]])
-                   ->orderby([['created_at', 'desc']])
+                   ->orderby([['a.created_at', 'desc']])
                    ->limit($limit)
                    ->get();
     return $result;
