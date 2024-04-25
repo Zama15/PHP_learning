@@ -2,6 +2,7 @@ const app = {
   routes: {
     home: '/home',
     initsession: '/session/initSession',
+    register: '/register/register',
 
     prevposts: '/posts/getPosts',
   },

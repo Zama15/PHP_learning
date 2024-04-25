@@ -11,14 +11,8 @@ function setHeader($args){
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous"> 
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.10.7/dist/sweetalert2.min.css" integrity="sha256-h2Gkn+H33lnKlQTNntQyLXMWq7/9XI2rlPCsLsVcUBs=" crossorigin="anonymous">
-  <!-- <link rel="stylesheet" href="/assets/css/app.css">   -->
+  <link rel="stylesheet" href="/assets/stylesheets/app.css">
   <title><?= $args->title ?></title>
-  <style>
-      body {
-          color: #888;
-          background-color : #CCC;
-      }
-  </style> 
 </head>
 <body>
   <div id="app" class="container-fluid p-0 sticky-top">
@@ -52,9 +46,9 @@ function setHeader($args){
             <?php endif; ?>
           </ul>
           <ul class="navbar-nav me-5 mb-2 d-flex">
-            <?php if(isset($ua->sv) && !$ua->sv): ?>
+            <?php if(!$ua): ?>
               <li class="nav-item">
-                <a href="/Session/iniSession" class="nav-link btn btn-link">
+                <a href="/Session/initSession" class="nav-link btn btn-link">
                   Inicar sesión
                 </a>
               </li>

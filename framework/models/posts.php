@@ -17,8 +17,8 @@ class Posts extends Model {
   }
 
   public function getAllPosts($limit = 5) {
-    // $result = $this->all()->get();
-    $result = $this->select(['title', 'date_format(created_at,"%d/%m/%Y") as fecha', 'userId as name'])
+    $result = $this->select(['a.title', 'date_format(a.created_at,"%d/%m/%Y") as fecha', 'b.name'])
+                   ->join('user b', 'a.userId = b.id')
                    ->where([['active', 1]])
                    ->orderby([['created_at', 'desc']])
                    ->limit($limit)

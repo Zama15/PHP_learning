@@ -4,6 +4,8 @@ namespace framework\classes;
 use framework\controllers\HomeController;
 use framework\controllers\ErrorController;
 use framework\controllers\PostsController;
+use framework\controllers\auth\SessionController;
+use framework\controllers\auth\RegisterController;
 
 class Router {
   private $uri = '';
@@ -24,6 +26,12 @@ class Router {
         break;
       case 'PostsController':
         $controller = new PostsController();
+        break;
+      case 'SessionController':
+        $controller = new SessionController();
+        break;
+      case 'RegisterController':
+        $controller = new RegisterController();
         break;
       default:
         $controller = new ErrorController();

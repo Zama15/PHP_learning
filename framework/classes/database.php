@@ -12,6 +12,7 @@ class DataBase {
   private $conn;
 
   public $s = ' * ';
+  public $j = '';
   public $w = ' 1 ';
   public $o = '';
   public $l = '';
@@ -42,6 +43,14 @@ class DataBase {
   public function select($cc = []) {
     if (count($cc) > 0) {
       $this->s = implode(", ", $cc);
+    }
+
+    return $this;
+  }
+
+  public function join($jj = '', $on = '') {
+    if ($jj != '' && $on != '') {
+      $this->j .= " JOIN $jj ON $on";
     }
 
     return $this;
@@ -89,7 +98,7 @@ class DataBase {
   public function get() {
     $table = lcfirst(str_replace("framework\\models\\", "", get_class($this)));
 
-    $sql = "SELECT $this->s FROM $table WHERE $this->w $this->o $this->l";
+    $sql = "SELECT $this->s FROM $table a $this->j WHERE $this->w $this->o $this->l";
     $result = $this->conn->query($sql);
 
     $data = [];
@@ -98,6 +107,20 @@ class DataBase {
     }
 
     return json_encode($data);
+  }
+
+  public function create() {
+    $table = lcfirst(str_replace("framework\\models\\", "", get_class($this)));
+
+    $attributes = implode(", ", $this->permitetd_params);
+    $values = trim(str_replace('&', '?, ', str_pad("", count($this->values), "&")), ', ');
+
+    $sql = "INSERT INTO $table ($attributes) VALUES ($values)";
+    $stmt = $this->conn->prepare($sql);
+    $stmt->bind_param(str_pad("", count($this->values), "s"), ...$this->values);
+    $stmt->execute();
+
+    return $stmt->insert_id;
   }
 }
 ?>
