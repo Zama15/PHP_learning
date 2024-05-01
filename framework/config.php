@@ -4,7 +4,7 @@ define('DS', DIRECTORY_SEPARATOR);
 define('ROOT', __DIR__ . DS);
 
 define('IS_LOCAL', in_array($_SERVER['REMOTE_ADDR'], ['127.0.0.1', '::1']) ? true : false);
-define('URL', IS_LOCAL ? 'http://frameworkphp.zdes/' : 'ROMOTE_URL');
+define('URL', IS_LOCAL ? 'http://127.0.0.2:2000/' : 'ROMOTE_URL');
 
 define('DB_HOST', IS_LOCAL ? 'localhost' : 'REMOTE_HOST');
 define('DB_USER', IS_LOCAL ? 'zama' : 'REMOTE_USER');

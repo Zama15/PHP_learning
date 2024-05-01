@@ -1,8 +1,9 @@
 <?php
 namespace framework\controllers\auth;
 
-use framework\controllers\BaseController;
+use framework\classes\redirect;
 use framework\classes\view;
+use framework\controllers\BaseController;
 use framework\models\user;
 
 class SessionController extends BaseController {
@@ -13,7 +14,8 @@ class SessionController extends BaseController {
   public function initSession($param = null) {
     $response = [
       'code' => 200,
-      'message' => 'Session started'
+      'message' => 'Session started',
+      'session' => self::sessionCheck() ?? ['valid' => false]
     ];
 
     View::render('auth/initsession', $response);
@@ -32,6 +34,7 @@ class SessionController extends BaseController {
 
   public function sessionRegister($r) {
     $data = json_decode($r);
+    $data = $data[0];
 
     session_start();
 
@@ -48,11 +51,11 @@ class SessionController extends BaseController {
 
   public function logout() {
     $this->sessionDestroy();
-    // Redirect::to('/');
+    Redirect::to('Home');
     exit();
   }
 
-  private static function sessionCheck() {
+  public static function sessionCheck() {
     $user = new User();
     session_start();
 

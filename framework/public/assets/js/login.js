@@ -38,6 +38,6 @@ const login = {
       } else {
         $('#error').removeClass('d-none');
       }
-    }).catch( err => ($('#error').removeClass('d-none')));
+    }).catch( err => console.error(err));
   }
 }

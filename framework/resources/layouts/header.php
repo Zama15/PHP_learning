@@ -1,7 +1,6 @@
 <?php
 function setHeader($args){
-  //     $ua = as_object($args->ua);
-  $ua = as_obj([])
+  $session = as_obj($args->session);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -37,7 +36,7 @@ function setHeader($args){
             <li class="nav-item">
               <a class="nav-link" aria-current="page" href="/">Inicio</a>
             </li>                        
-            <?php if(isset($ua->sv) && $ua->sv): ?>
+            <?php if(isset($session->valid) && $session->valid): ?>
               <li class="nav-item">
                 <a class="nav-link btn btn-link" type="button" aria-current="page" href="/UserPosts">
                   Mis publicaciones
@@ -46,7 +45,7 @@ function setHeader($args){
             <?php endif; ?>
           </ul>
           <ul class="navbar-nav me-5 mb-2 d-flex">
-            <?php if(!$ua): ?>
+            <?php if(!$session->valid): ?>
               <li class="nav-item">
                 <a href="/Session/initSession" class="nav-link btn btn-link">
                   Inicar sesión
@@ -55,7 +54,7 @@ function setHeader($args){
             <?php else: ?>
               <li class="nav-item dropdown me-5">
                 <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  <?= isset($ua->username) ? $ua->username : '' ?>
+                  <?= isset($session->name) ? $session->name : '' ?>
                 </a>
                 <ul class="dropdown-menu">
                   <li>

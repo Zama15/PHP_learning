@@ -2,7 +2,6 @@
   include_once LAYOUTS . 'header.php';
   
   setHeader($d);
-  //$ua = as_object($_SESSION);
 ?>
 
 <div class="row mx-auto">

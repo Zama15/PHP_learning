@@ -13,7 +13,8 @@ class RegisterController extends BaseController {
   public function index($param = null) {
     $response = [
       'code' => 200,
-      'message' => 'Register'
+      'message' => 'Register',
+      'session' => SessionController::sessionCheck() ?? ['valid' => false]
     ];
 
     View::render('auth/register', $response);

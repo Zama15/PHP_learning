@@ -2,6 +2,7 @@
 namespace framework\controllers;
 
 use framework\classes\view;
+use framework\controllers\auth\SessionController;
 
 class ErrorController extends BaseController {
   public function __construct() {
@@ -12,7 +13,8 @@ class ErrorController extends BaseController {
     
     $response = [
       'title' => 'Error: 404 Not Found',
-      'code' => '404'
+      'code' => '404',
+      'session' => SessionController::sessionCheck() ?? ['valid' => false]
     ];
 
     View::render('404', $response);

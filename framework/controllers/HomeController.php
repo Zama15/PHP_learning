@@ -2,6 +2,7 @@
 namespace framework\controllers;
 
 use framework\classes\view;
+use framework\controllers\auth\SessionController;
 
 class HomeController extends BaseController {
   public function __construct() {
@@ -12,7 +13,8 @@ class HomeController extends BaseController {
     
     $response = [
       'title' => 'Home',
-      'code' => '200'
+      'code' => '200',
+      'session' => SessionController::sessionCheck() ?? ['valid' => false]
     ];
 
     View::render('home', $response);
