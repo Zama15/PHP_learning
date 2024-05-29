@@ -12,6 +12,7 @@ class RegisterController extends BaseController {
 
   public function index($param = null) {
     $response = [
+      'title' => 'Register',
       'code' => 200,
       'message' => 'Register',
       'session' => SessionController::sessionCheck() ?? ['valid' => false]

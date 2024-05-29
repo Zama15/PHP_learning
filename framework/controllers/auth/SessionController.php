@@ -13,6 +13,7 @@ class SessionController extends BaseController {
 
   public function initSession($param = null) {
     $response = [
+      'title' => 'Init Session',
       'code' => 200,
       'message' => 'Session started',
       'session' => self::sessionCheck() ?? ['valid' => false]

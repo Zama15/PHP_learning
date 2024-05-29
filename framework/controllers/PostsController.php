@@ -15,5 +15,12 @@ class PostsController extends BaseController {
 
     echo $result;
   }
+
+  public function getLastPost() {
+    $posts = new Posts();
+    $result = $posts->lastPost();
+
+    echo $result;
+  }
 }
 ?>

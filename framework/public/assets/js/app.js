@@ -6,7 +6,12 @@ const app = {
     lastPost: '/posts/getLastPost',
   },
 
-  user: {},
+  user: {
+    session: false,
+    id: '',
+    name: '',
+    tipo: '',
+  },
   pp: $('#prev-posts'),
   lp: $('#content'),
 
@@ -18,7 +23,6 @@ const app = {
     .then( response => response.json())
     .then( posts => {
       html = '';
-      console.log(posts);
       for (let post of posts) {
         html += `
           <button onclick="app.openPosts(event, ${ posts.id }, this)"
@@ -49,7 +53,7 @@ const app = {
             <small class="text-muted">
               ${ post[0].fecha } by ${ post[0].name }
             </small>
-            <p class="py-3 border-bottom lh-sm fs-5 mb-0" style="text-align: justify;"
+            <p class="py-3 border-bottom lh-sm fs-5 mb-0" style="text-align: justify;">
               ${ post[0].body }
             </p>
           </div>
@@ -62,4 +66,5 @@ const app = {
 
 window.onload = function () {
   app.previusPosts();
+  app.lastPost();
 }

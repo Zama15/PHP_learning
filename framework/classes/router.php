@@ -4,6 +4,7 @@ namespace framework\classes;
 use framework\controllers\HomeController;
 use framework\controllers\ErrorController;
 use framework\controllers\PostsController;
+use framework\controllers\UserPostsController;
 use framework\controllers\auth\SessionController;
 use framework\controllers\auth\RegisterController;
 
@@ -32,6 +33,9 @@ class Router {
         break;
       case 'RegisterController':
         $controller = new RegisterController();
+        break;
+      case 'UserpostsController':
+        $controller = new UserPostsController();
         break;
       default:
         $controller = new ErrorController();
