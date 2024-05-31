@@ -6,7 +6,7 @@ use framework\models\model;
 
 class Posts extends Model {
   protected $table;
-  protected $permitetd_params = ['userId', 'title', 'body'];
+  protected $permited_params = ['userId', 'title', 'body'];
 
   public $values = [];
 

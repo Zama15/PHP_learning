@@ -59,6 +59,11 @@ function setHeader($args){
                 </a>
                 <ul class="dropdown-menu">
                   <li>
+                    <a class="dropdown-item btn btn-link" href="/User/userprofile">
+                      Mi perfil
+                    </a>
+                  </li>
+                  <li>
                     <a class="dropdown-item btn btn-link" href="\Session\logout">
                       Cerrar sesión
                     </a>

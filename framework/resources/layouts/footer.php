@@ -14,12 +14,11 @@ function setFooter($args,...$scripts){
       app.user.name = "<?= $session->name ?? '' ?>";
       app.user.tipo = <?= $session->tipo ?? '' ?>; 
     })
-    console.log(app.user);
-    </script>
+  </script>
 
-    <?php foreach($scripts as $script){ ?>
-      <script src="/assets/js/<?=$script?>"></script>
-    <?php } ?>
+  <?php foreach($scripts as $script){ ?>
+    <script src="/assets/js/<?=$script?>"></script>
+  <?php } ?>
 <?php } ?>
 
 <?php function closeFooter(){ ?>

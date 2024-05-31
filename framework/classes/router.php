@@ -7,6 +7,7 @@ use framework\controllers\PostsController;
 use framework\controllers\UserPostsController;
 use framework\controllers\auth\SessionController;
 use framework\controllers\auth\RegisterController;
+use framework\controllers\auth\UserController;
 
 class Router {
   private $uri = '';
@@ -36,6 +37,9 @@ class Router {
         break;
       case 'UserpostsController':
         $controller = new UserPostsController();
+        break;
+      case 'UserController':
+        $controller = new UserController();
         break;
       default:
         $controller = new ErrorController();
